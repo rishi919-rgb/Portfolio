@@ -1,0 +1,288 @@
+:root {
+  /* DARK MODE (Default) - "Spacious Glass" */
+
+  /* Palette: Deep, Rich, Glassy */
+  /* We add a subtle tint to the background to avoid pure B&W flatness */
+  --primary: #ffffff;
+  --secondary: #60a5fa;
+  /* A brighter blue for accents */
+  --accent-purple: #a855f7;
+  /* For gradient pops */
+
+  --bg-dark: #030305;
+  /* Almost black */
+
+  /* Background Art Variables (DARK MODE - High Visibility) */
+  --aurora-cyan: rgba(56, 189, 248, 0.4);
+  --aurora-purple: rgba(168, 85, 247, 0.4);
+  --aurora-core: rgba(255, 255, 255, 0.1);
+  --streak-color: rgba(56, 189, 248, 0.8);
+  --shape-opacity: 0.4;
+
+  /* Enhanced Dark Mode Glass - Higher Opacity & Contrast */
+  --glass-bg: rgba(25, 25, 30, 0.8);
+  /* Darker, more solid background */
+  --glass-border: rgba(255, 255, 255, 0.12);
+  /* Brighter border for visibility */
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  /* Slate-400 */
+  --input-bg: rgba(255, 255, 255, 0.08);
+  /* Brighter input bg */
+
+  /* Dark Mode Defaults */
+  --nav-glass: rgba(15, 15, 15, 0.65);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-text: #ffffff;
+
+  --skill-bg: transparent;
+  /* Floating look in dark mode */
+  --skill-border: transparent;
+}
+
+[data-theme="light"] {
+  --primary: #171717;
+  --secondary: #2563eb;
+  --accent-purple: #9333ea;
+
+  --bg-dark: #f8fafc;
+
+  /* Background Art Variables (LIGHT MODE - Subtle & Clean) */
+  --aurora-cyan: rgba(56, 189, 248, 0.15);
+  --aurora-purple: rgba(168, 85, 247, 0.15);
+  --aurora-core: rgba(255, 255, 255, 0.04);
+  --streak-color: rgba(56, 189, 248, 0.4);
+  --shape-opacity: 0.2;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-highlight: rgba(255, 255, 255, 0.4);
+
+  /* Light Mode Specifics */
+  --nav-glass: rgba(255, 255, 255, 0.95);
+  /* Solid frost for better contrast */
+  --nav-border: rgba(0, 0, 0, 0.1);
+  --nav-text: #0f172a;
+
+  --skill-bg: rgba(255, 255, 255, 0.6);
+  /* Visible bubble for skills */
+  --skill-border: rgba(0, 0, 0, 0.05);
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --input-bg: rgba(0, 0, 0, 0.03);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.6;
+  /* subtle background mesh/gradient for depth */
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.08), transparent 25%);
+  background-attachment: fixed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none !important;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- UTILITIES --- */
+.section-padding {
+  padding: 6rem 2rem;
+  /* Adjusted for better flow */
+}
+
+.container-width {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- THEME TOGGLE (INLINE IN NAVBAR) --- */
+.theme-toggle-btn {
+  width: 45px;
+  height: 45px;
+  /* No longer fixed, it lives in the navbar */
+}
+
+/* On mobile, we might want it smaller? */
+@media (max-width: 768px) {
+  .theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* --- ENHANCED GLASS CARD --- */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-highlight);
+  /* Highlight top edge for 3D feel */
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Glow Effect */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.glass-card:hover::before {
+  left: 100%;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* --- TYPOGRAPHY & TAGS --- */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  background: linear-gradient(to right, var(--text-main), var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--text-main);
+  color: var(--bg-dark);
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 4rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .grid-halves {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+    display: flex !important;
+    flex-direction: column-reverse;
+    /* Image top, Text bottom usually? Or Text top? User code had Text first then Image. Column reverse makes Image TOP. Let's try Image Top for mobile profile. */
+  }
+
+  /* If we want Text Top on mobile, just use flex-direction: column. 
+     The DOM order is Text then Image. 
+     So 'column' puts Text top. 'column-reverse' puts Image top. 
+     For a portfolio "Hi I'm Rishi", text first is often better for SEO/Context.
+     Let's stick to Text Top (Standard flow).
+  */
+  .grid-halves.hero-grid {
+    flex-direction: column;
+    /* Text Top */
+  }
+
+  /* Adjust container width for small screens */
+  .container-width {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  /* Optimize glass cards for touch - less hover movement */
+  .glass-card:hover {
+    transform: translateY(-2px);
+  }
+
+  /* --- MOBILE NAV TOGGLES --- */
+  .desktop-nav {
+    display: none !important;
+    /* Hide Desktop Nav */
+  }
+
+  .mobile-nav-toggle {
+    display: flex !important;
+    /* Show Mobile Nav */
+  }
+
+  /* Reposition Theme Toggle to Bottom Right on Mobile to clear top area */
+  /* We can target the theme toggle if it has a specific class or style, 
+     but since it's inline styles in React, we might need a class. 
+     I'll add a check in ThemeToggle component logic, or try to override here if possible, 
+     but React inline styles win. 
+     Let's rely on the React component update for Theme Toggle position. 
+  */
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
