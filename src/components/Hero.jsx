@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaYoutube, FaFileAlt } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import { TypeAnimation } from 'react-type-animation';
-import Resume from './Resume';
+
 
 const Hero = () => {
-    const [isResumeOpen, setIsResumeOpen] = useState(false);
+    // Resume modal state removed, directly downloading/viewing PDF now
 
     return (
         <section id="hero" style={{
@@ -18,9 +18,7 @@ const Hero = () => {
             overflow: 'hidden',
             paddingTop: '60px'
         }}>
-            <AnimatePresence>
-                {isResumeOpen && <Resume isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />}
-            </AnimatePresence>
+            {/* Resume Modal Removed */}
 
             <div className="container-width grid-halves hero-grid" style={{
                 display: 'grid',
@@ -85,9 +83,15 @@ const Hero = () => {
                     </h2>
 
                     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                        <button onClick={() => setIsResumeOpen(true)} className="btn-primary" style={{ cursor: 'pointer' }}>
+                        <a 
+                            href="/Rishikesh_Singh_Resume.pdf" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="btn-primary" 
+                            style={{ cursor: 'pointer' }}
+                        >
                             <FaFileAlt /> View Resume
-                        </button>
+                        </a>
 
                         <div style={{ width: '1px', height: '30px', background: 'var(--glass-border)', margin: '0 0.5rem' }}></div>
 
