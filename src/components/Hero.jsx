@@ -127,7 +127,6 @@ const Hero = () => {
                     style={{
                         position: 'relative',
                         display: 'flex',
-                        justifyContent: 'center',
                         justifyContent: 'flex-end'
                     }}
                 >
