@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import ThemeToggle from './ThemeToggle'; // Move here
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -106,14 +106,6 @@ const Navbar = () => {
                         opacity: scrolled ? 1 : 0.95 // Add a tiny bit of opacity difference if needed
                     }}
                 >
-                    <a href="#" style={{
-                        textDecoration: 'none',
-                        color: 'var(--primary)',
-                        fontWeight: '900',
-                        fontSize: '1.2rem',
-                        letterSpacing: '-1px'
-                    }}>R.</a>
-
                     <ul style={{ display: 'flex', listStyle: 'none', gap: '2rem', margin: 0, padding: 0 }}>
                         {navLinks.map((link, index) => {
                             const isActive = activeSection === link.id;
@@ -181,20 +173,6 @@ const Navbar = () => {
                 justifyContent: 'space-between',
                 alignItems: 'center'
             }}>
-                {/* Logo */}
-                <a href="#" style={{
-                    textDecoration: 'none',
-                    color: 'var(--primary)',
-                    fontWeight: '900',
-                    fontSize: '1.5rem',
-                    letterSpacing: '-1px',
-                    background: 'var(--nav-glass)',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '20px',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid var(--nav-border)'
-                }}>R.</a>
-
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <ThemeToggle />
 
