@@ -132,12 +132,12 @@ const Projects = () => {
     ];
 
     const webClones = [
-        { title: "Santa Cruz", demo: "https://rishikesh919.netlify.app/web%20clones/santacruz/", img: shot6 },
-        { title: "Yeti Cycles", demo: "https://rishikesh919.netlify.app/web%20clones/yeticycles/", img: shot5 },
-        { title: "Disney+ Clone", demo: "https://rishikesh919.netlify.app/web%20clones/disney/", img: shot1 },
-        { title: "CoffeeHouse", demo: "https://rishikesh919.netlify.app/web%20clones/coffee/", img: shot2 },
-        { title: "Western Rise", demo: "https://rishikesh919.netlify.app/web%20clones/westernrise/", img: shot3 },
-        { title: "Celestial AI", demo: "https://rishikesh919.netlify.app/web%20clones/celestial/", img: shot4 }
+        { title: "Santa Cruz", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/santacruz/index.html", img: shot6 },
+        { title: "Yeti Cycles", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/yeticycles/index.html", img: shot5 },
+        { title: "Disney+ Clone", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/disney/index.html", img: shot1 },
+        { title: "CoffeeHouse", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/coffee/index.html", img: shot2 },
+        { title: "Western Rise", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/westernrise/index.html", img: shot3 },
+        { title: "Celestial AI", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/Celestial/index.html", img: shot4 }
     ];
 
     const games = [
