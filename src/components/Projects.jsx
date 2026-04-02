@@ -141,10 +141,10 @@ const Projects = () => {
     ];
 
     const games = [
-        { title: "Tic Tac Toe", link: "https://rishikesh919.netlify.app/games/tic%20tac%20toe/", img: shot9 },
-        { title: "Typing Master", link: "https://rishikesh919.netlify.app/games/typing%20maaster/", img: shot13 },
-        { title: "Flip Cards", link: "https://rishikesh919.netlify.app/games/flip%20a%20card/", img: shot14 },
-        { title: "To Do List", link: "https://rishikesh919.netlify.app/games/todo/", img: shot15 }
+        { title: "Tic Tac Toe", link: "https://rishikesh-side-project.vercel.app/Games/Tic%20Tac%20Toe/index.html", img: shot9 },
+        { title: "Typing Master", link: "https://rishikesh-side-project.vercel.app/Games/Typing%20Maaster/index.html", img: shot13 },
+        { title: "Flip Cards", link: "https://rishikesh-side-project.vercel.app/Games/Flip%20a%20card/index.html", img: shot14 },
+        { title: "To Do List", link: "https://rishikesh-side-project.vercel.app/Games/ToDo/index.html", img: shot15 }
     ];
 
     return (
