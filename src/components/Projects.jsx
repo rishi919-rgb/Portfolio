@@ -16,6 +16,7 @@ import drishtiSS from '../assets/Images/drishti_ss.png';
 import truthstormSS from '../assets/Images/truthstorm_ss.png';
 import debateAISS from '../assets/Images/debate_ai_visual.png';
 import movieSS from '../assets/Images/movie_explorer_visual.png';
+import fasalrakshakSS from '../assets/Images/fasalrakshak_ss.png';
 
 // Screenshots - Games
 import shot9 from '../assets/Images/Screenshot 2026-02-08 143240.png';
@@ -62,6 +63,24 @@ const Projects = () => {
             img: drishtiSS,
             size: "large",
             accent: "var(--secondary)"
+        },
+        {
+            id: "fasalrakshak",
+            title: "FasalRakshak AI",
+            tagline: "Intelligent Agricultural Companion",
+            desc: "A next-generation companion built exclusively for farmers. Replaces scattered data and guesswork with real-time, localized, and actionable agricultural intelligence — powered by cutting-edge AI.",
+            features: ["Crop Pathology Engine", "Hyper-Local Weather", "Smart Soil Health Hub", "Multilingual Support"],
+            tech: [
+                { icon: <SiReact />, name: "React" },
+                { icon: <SiNodedotjs />, name: "Node.js" },
+                { icon: <SiMongodb />, name: "MongoDB" },
+                { icon: <SiGooglecloud />, name: "Gemini AI" }
+            ],
+            repo: "https://github.com/kamleshchandela/fasalrakshak",
+            demo: "#",
+            img: fasalrakshakSS,
+            size: "large",
+            accent: "#10b981"
         },
         {
             id: "truthstorm",
@@ -168,8 +187,8 @@ const Projects = () => {
 
                 {/* Main Projects Grid */}
                 <div className="projects-grid">
-                    {/* Drishti - Hero Card */}
-                    {featuredProjects.filter(p => p.id === 'drishti').map(p => (
+                    {/* Flagship Projects */}
+                    {featuredProjects.filter(p => p.size === 'large').map(p => (
                         <motion.div
                             key={p.id}
                             className="project-card project-card--hero"
