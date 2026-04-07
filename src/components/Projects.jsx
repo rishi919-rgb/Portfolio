@@ -552,23 +552,35 @@ const Projects = () => {
                 }
 
                 .project-hero-image {
-                    flex: 0.8;
+                    flex: 1.2;
                     position: relative;
-                    min-width: 350px;
-                    background: #000;
+                    min-width: 300px;
+                    background: transparent;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    /* Using radial gradient to blend empty contain gaps into the background smoothly if they appear */
                 }
 
                 .project-hero-image img {
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
-                    opacity: 0.85;
+                    object-fit: contain;
+                    opacity: 0.95;
+                    border-radius: 0 40px 40px 0;
+                    transform: scale(0.95);
+                    transition: transform 0.5s ease;
+                }
+                
+                .project-card--hero:hover .project-hero-image img {
+                    transform: scale(1);
                 }
 
                 .hero-image-overlay {
                     position: absolute;
                     inset: 0;
-                    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 60%);
+                    background: linear-gradient(to right, rgba(10, 10, 15, 0.9) 0%, transparent 40%);
+                    pointer-events: none;
                 }
 
                 .hero-image-tag {
