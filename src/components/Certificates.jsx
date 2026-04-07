@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaAward, FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 
 // Importing images directly
 import cert1 from '../assets/WhatsApp Image 2026-02-04 a.jpeg';
@@ -23,70 +23,19 @@ const Certificates = () => {
     const [selectedCert, setSelectedCert] = useState(null);
 
     const credentialList = [
-        // PDFs
-        { 
-            id: 'pdf-1', 
-            title: "Core Technical Certification", 
-            desc: "Demonstrates high proficiency in fundamental and advanced computer engineering concepts.", 
-            file: pdf1, 
-            type: "pdf" 
-        },
-        { 
-            id: 'pdf-2', 
-            title: "Specialized Training Credential", 
-            desc: "Awarded upon successful completion of intensive specialized technical training modules.", 
-            file: pdf2, 
-            type: "pdf" 
-        },
-        { 
-            id: 'pdf-3', 
-            title: "Industry Skill Recognition", 
-            desc: "Recognized by industry leaders for skill mastery and software development integration.", 
-            file: pdf3, 
-            type: "pdf" 
-        },
-        { 
-            id: 'pdf-4', 
-            title: "Advanced Coursework Completion", 
-            desc: "Successful completion of rigorous academic-level coursework with practical evaluations.", 
-            file: pdf4, 
-            type: "pdf" 
-        },
-        { 
-            id: 'pdf-5', 
-            title: "Technical Validation", 
-            desc: "Authorized validation of technical capabilities, logic building, and problem-solving.", 
-            file: pdf5, 
-            type: "pdf" 
-        },
-        { 
-            id: 'pdf-6', 
-            title: "System Architecture & Design", 
-            desc: "Demonstrated competence in designing resilient systems and scalable application logic.", 
-            file: pdf6, 
-            type: "pdf" 
-        },
-        { 
-            id: 'pdf-7', 
-            title: "Security & Protocols", 
-            desc: "Understanding of core application security, modern protocols, and API development.", 
-            file: pdf7, 
-            type: "pdf" 
-        },
-        { 
-            id: 'pdf-8', 
-            title: "Mastery Certification", 
-            desc: "High-level certification denoting comprehensive technical mastery and engineering excellence.", 
-            file: pdf8, 
-            type: "pdf" 
-        },
-        
-        // Images
-        { id: 'img-1', title: "Early Professional Achievement", desc: "Awarded for exceptional performance in competitive technical domains.", file: cert1, type: "image", thumbnail: cert1 },
-        { id: 'img-2', title: "Excellence Award", desc: "Acknowledging continued dedication to problem solving and software architecture.", file: cert2, type: "image", thumbnail: cert2 },
-        { id: 'img-3', title: "Foundation Certification", desc: "Foundational capabilities in building accessible and performant systems.", file: cert3, type: "image", thumbnail: cert3 },
-        { id: 'img-4', title: "Hackathon Merit", desc: "Recognized for rapid prototyping and innovative solution delivery.", file: cert4, type: "image", thumbnail: cert4 },
-        { id: 'img-5', title: "Developer Credential", desc: "Demonstration of clean code practices and collaborative software engineering.", file: cert5, type: "image", thumbnail: cert5 }
+        { id: 'img-1', file: cert1, type: "image" },
+        { id: 'img-2', file: cert2, type: "image" },
+        { id: 'img-3', file: cert3, type: "image" },
+        { id: 'img-4', file: cert4, type: "image" },
+        { id: 'img-5', file: cert5, type: "image" },
+        { id: 'pdf-1', file: pdf1, type: "pdf" },
+        { id: 'pdf-2', file: pdf2, type: "pdf" },
+        { id: 'pdf-3', file: pdf3, type: "pdf" },
+        { id: 'pdf-4', file: pdf4, type: "pdf" },
+        { id: 'pdf-5', file: pdf5, type: "pdf" },
+        { id: 'pdf-6', file: pdf6, type: "pdf" },
+        { id: 'pdf-7', file: pdf7, type: "pdf" },
+        { id: 'pdf-8', file: pdf8, type: "pdf" }
     ];
 
     return (
@@ -108,8 +57,8 @@ const Certificates = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-                    gap: '2rem'
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+                    gap: '1.5rem'
                 }}>
                     {credentialList.map((cert, index) => (
                         <motion.div
@@ -118,54 +67,43 @@ const Certificates = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: (index % 4) * 0.1 }}
-                            whileHover={{ y: -5, borderColor: 'var(--secondary)' }}
+                            whileHover={{ y: -5, borderColor: 'var(--secondary)', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
                             onClick={() => setSelectedCert(cert)}
                             className="glass-card"
                             style={{
-                                padding: '1.5rem',
-                                cursor: 'pointer',
-                                borderRadius: '24px',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '1rem',
+                                padding: '0.5rem',
+                                cursor: 'zoom-in',
+                                borderRadius: '16px',
                                 border: '1px solid var(--glass-border)',
                                 position: 'relative',
-                                overflow: 'hidden'
+                                overflow: 'hidden',
+                                background: 'rgba(255, 255, 255, 0.03)'
                             }}
                         >
-                            {/* Gradient Background Hint */}
-                            <div style={{ position: 'absolute', top: '-50%', right: '-50%', width: '100%', height: '100%', background: 'radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
-                            
-                            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', flexGrow: 1 }}>
-                                <div style={{ 
-                                    minWidth: '50px', 
-                                    height: '50px', 
-                                    background: 'rgba(96, 165, 250, 0.1)', 
-                                    borderRadius: '12px', 
-                                    display: 'flex', 
-                                    alignItems: 'center', 
-                                    justifyContent: 'center',
-                                    color: 'var(--secondary)'
-                                }}>
-                                    <FaAward size={24} />
-                                </div>
-                                <div>
-                                    <h3 style={{ fontSize: '1.1rem', color: 'var(--text-main)', fontWeight: 'bold', marginBottom: '0.4rem', lineHeight: '1.3' }}>
-                                        {cert.title}
-                                    </h3>
-                                    <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.5' }}>
-                                        {cert.desc}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--glass-border)', paddingTop: '1rem', marginTop: '0.5rem' }}>
-                                <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                                    {cert.type === 'pdf' ? 'PDF Document' : 'Image Scan'}
-                                </span>
-                                <span style={{ color: 'var(--secondary)', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: 'bold' }}>
-                                    Inspect <FaExternalLinkAlt size={12} />
-                                </span>
+                            <div style={{ aspectRatio: '1.414', overflow: 'hidden', borderRadius: '10px', background: '#e5e5e5', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                                {cert.type === 'image' ? (
+                                    <img
+                                        src={cert.file}
+                                        alt="Certificate Preview"
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'contain'
+                                        }}
+                                    />
+                                ) : (
+                                    /* Pointer-events set to none so it doesn't hijack the click from the parent div */
+                                    <iframe
+                                        src={`${cert.file}#view=FitH&toolbar=0&navpanes=0&scrollbar=0`}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            border: 'none',
+                                            pointerEvents: 'none'
+                                        }}
+                                        tabIndex="-1"
+                                    />
+                                )}
                             </div>
                         </motion.div>
                     ))}
@@ -196,11 +134,7 @@ const Certificates = () => {
                         }}
                     >
                         <div style={{ maxWidth: '1000px', width: '100%', height: '85vh', background: 'var(--bg-main)', borderRadius: '16px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 0 50px rgba(0,0,0,0.5)' }}>
-                            <div style={{ padding: '1.2rem 2rem', borderBottom: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--glass-bg)' }}>
-                                <div>
-                                    <h3 style={{ margin: 0, color: 'var(--text-main)', fontSize: '1.2rem', fontWeight: 'bold' }}>{selectedCert.title}</h3>
-                                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Verified Document Viewer</span>
-                                </div>
+                            <div style={{ padding: '1rem 2rem', borderBottom: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', background: 'var(--glass-bg)' }}>
                                 <button 
                                     onClick={() => setSelectedCert(null)}
                                     style={{ background: 'rgba(255, 255, 255, 0.1)', border: 'none', color: '#fff', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: '0.2s' }}
@@ -215,7 +149,7 @@ const Certificates = () => {
                                 {selectedCert.type === 'image' ? (
                                     <img
                                         src={selectedCert.file}
-                                        alt={selectedCert.title}
+                                        alt="Verified Certificate"
                                         style={{
                                             maxWidth: '100%',
                                             maxHeight: '100%',
@@ -226,7 +160,6 @@ const Certificates = () => {
                                 ) : (
                                     <iframe
                                         src={`${selectedCert.file}#toolbar=0`}
-                                        title={selectedCert.title}
                                         style={{
                                             width: '100%',
                                             height: '100%',
