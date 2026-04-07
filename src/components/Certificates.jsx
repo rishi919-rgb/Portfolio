@@ -56,8 +56,9 @@ const Certificates = () => {
                 </center>
 
                 <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
                     gap: '1.5rem'
                 }}>
                     {credentialList.map((cert, index) => (
@@ -71,6 +72,7 @@ const Certificates = () => {
                             onClick={() => setSelectedCert(cert)}
                             className="glass-card"
                             style={{
+                                width: '240px',
                                 padding: '0.5rem',
                                 cursor: 'zoom-in',
                                 borderRadius: '16px',
@@ -117,6 +119,7 @@ const Certificates = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
+                        onClick={() => setSelectedCert(null)}
                         style={{
                             position: 'fixed',
                             top: 0,
@@ -130,10 +133,14 @@ const Certificates = () => {
                             justifyContent: 'center',
                             alignItems: 'center',
                             zIndex: 10000,
-                            padding: '2rem'
+                            padding: '2rem',
+                            cursor: 'zoom-out'
                         }}
                     >
-                        <div style={{ maxWidth: '1000px', width: '100%', height: '85vh', background: 'var(--bg-main)', borderRadius: '16px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 0 50px rgba(0,0,0,0.5)' }}>
+                        <div 
+                            onClick={(e) => e.stopPropagation()}
+                            style={{ maxWidth: '1000px', width: '100%', height: '85vh', background: 'var(--bg-main)', borderRadius: '16px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 0 50px rgba(0,0,0,0.5)', cursor: 'default' }}
+                        >
                             <div style={{ padding: '1rem 2rem', borderBottom: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', background: 'var(--glass-bg)' }}>
                                 <button 
                                     onClick={() => setSelectedCert(null)}
