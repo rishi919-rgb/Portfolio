@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaBuilding, FaTrophy } from 'react-icons/fa';
 
 // Importing images directly
 import cert1 from '../assets/WhatsApp Image 2026-02-04 a.jpeg';
@@ -23,19 +23,19 @@ const Certificates = () => {
     const [selectedCert, setSelectedCert] = useState(null);
 
     const credentialList = [
-        { id: 'img-1', file: cert1, type: "image" },
-        { id: 'img-2', file: cert2, type: "image" },
-        { id: 'img-3', file: cert3, type: "image" },
-        { id: 'img-4', file: cert4, type: "image" },
-        { id: 'img-5', file: cert5, type: "image" },
-        { id: 'pdf-1', file: pdf1, type: "pdf" },
-        { id: 'pdf-2', file: pdf2, type: "pdf" },
-        { id: 'pdf-3', file: pdf3, type: "pdf" },
-        { id: 'pdf-4', file: pdf4, type: "pdf" },
-        { id: 'pdf-5', file: pdf5, type: "pdf" },
-        { id: 'pdf-6', file: pdf6, type: "pdf" },
-        { id: 'pdf-7', file: pdf7, type: "pdf" },
-        { id: 'pdf-8', file: pdf8, type: "pdf" }
+        { id: 'img-1', file: cert1, type: "image", title: "Appian AI Application Challenge", event: "Shaastra 2026", issuer: "IIT Madras", category: "Participation" },
+        { id: 'img-2', file: cert2, type: "image", title: "Pulse Quest", event: "Elan & nVision 2026", issuer: "IIT Hyderabad", category: "Appreciation" },
+        { id: 'img-3', file: cert3, type: "image", title: "Code Clash", event: "Elan & nVision 2026", issuer: "IIT Hyderabad", category: "Appreciation" },
+        { id: 'img-4', file: cert4, type: "image", title: "Synapse: NeuroTech Challenge", event: "Parsec 6.0", issuer: "IIT Dharwad", category: "Participation" },
+        { id: 'img-5', file: cert5, type: "image", title: "Synaptix Frontier AI Hack", event: "Shaastra 2026", issuer: "IIT Madras", category: "Participation" },
+        { id: 'pdf-1', file: pdf1, type: "pdf", title: "OpenCode 2025", event: "Opencode'25", issuer: "IIIT Allahabad", category: "Participation" },
+        { id: 'pdf-2', file: pdf2, type: "pdf", title: "Policy Hackathon", event: "Policy Conclave'26", issuer: "IIT Kanpur", category: "Participation" },
+        { id: 'pdf-3', file: pdf3, type: "pdf", title: "GameTrade Hackathon", event: "Phase 1 - Storyboard & Concept", issuer: "IIT Madras", category: "Participation" },
+        { id: 'pdf-4', file: pdf4, type: "pdf", title: "ArtPark CodeForge Hackathon", event: "Build & Submit (Quantum Syndicates)", issuer: "IISc Bangalore", category: "Participation" },
+        { id: 'pdf-5', file: pdf5, type: "pdf", title: "GCET Hackathon 2026", event: "Hackathon", issuer: "G H Patel College", category: "Participation" },
+        { id: 'pdf-6', file: pdf6, type: "pdf", title: "Pragati 2.0 Build-it On", event: "Hackathon (Indian Innovators)", issuer: "TCET Mumbai", category: "Participation" },
+        { id: 'pdf-7', file: pdf7, type: "pdf", title: "Hack4Krche", event: "Idea Submission & Evaluation", issuer: "Kasturi Ram College", category: "Participation" },
+        { id: 'pdf-8', file: pdf8, type: "pdf", title: "Dev Heat Hackathon", event: "Spring Fiesta", issuer: "IIIT Surat", category: "Participation" }
     ];
 
     return (
@@ -72,17 +72,19 @@ const Certificates = () => {
                             onClick={() => setSelectedCert(cert)}
                             className="glass-card"
                             style={{
-                                width: '240px',
-                                padding: '0.5rem',
+                                width: '280px',
+                                padding: '1rem',
                                 cursor: 'zoom-in',
                                 borderRadius: '16px',
                                 border: '1px solid var(--glass-border)',
                                 position: 'relative',
                                 overflow: 'hidden',
-                                background: 'rgba(255, 255, 255, 0.03)'
+                                background: 'rgba(255, 255, 255, 0.03)',
+                                display: 'flex',
+                                flexDirection: 'column'
                             }}
                         >
-                            <div style={{ aspectRatio: '1.414', overflow: 'hidden', borderRadius: '10px', background: '#e5e5e5', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                            <div style={{ aspectRatio: '1.414', overflow: 'hidden', borderRadius: '10px', background: '#e5e5e5', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', border: '1px solid rgba(255,255,255,0.1)' }}>
                                 {cert.type === 'image' ? (
                                     <img
                                         src={cert.file}
@@ -101,11 +103,40 @@ const Certificates = () => {
                                             width: '100%',
                                             height: '100%',
                                             border: 'none',
-                                            pointerEvents: 'none'
+                                            pointerEvents: 'none',
+                                            transform: 'scale(1.08)',
+                                            transformOrigin: 'center'
                                         }}
                                         tabIndex="-1"
                                     />
                                 )}
+                            </div>
+                            
+                            <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                                <h3 style={{ fontSize: '1rem', color: '#fff', margin: 0, fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={cert.title}>
+                                    {cert.title}
+                                </h3>
+                                <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <FaBuilding size={12} style={{ color: 'var(--secondary)' }} />
+                                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={cert.issuer}>{cert.issuer}</span>
+                                </div>
+                                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+                                    <FaTrophy size={11} />
+                                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={cert.event}>{cert.event}</span>
+                                </div>
+                                <span style={{
+                                    alignSelf: 'flex-start',
+                                    marginTop: '0.5rem',
+                                    padding: '0.2rem 0.6rem',
+                                    fontSize: '0.65rem',
+                                    borderRadius: '50px',
+                                    background: 'rgba(255,255,255,0.05)',
+                                    color: 'var(--secondary)',
+                                    fontWeight: '500',
+                                    border: '1px solid rgba(255,255,255,0.1)'
+                                }}>
+                                    {cert.category}
+                                </span>
                             </div>
                         </motion.div>
                     ))}
@@ -137,31 +168,45 @@ const Certificates = () => {
                             cursor: 'zoom-out'
                         }}
                     >
+                        {/* Globally restore native cursor while modal is open, since PDF iframes hijack custom cursors anyway */}
+                        <style>{`
+                            * { cursor: auto !important; }
+                        `}</style>
                         <div 
                             onClick={(e) => e.stopPropagation()}
-                            style={{ maxWidth: '1000px', width: '100%', height: '85vh', background: 'var(--bg-main)', borderRadius: '16px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 0 50px rgba(0,0,0,0.5)', cursor: 'default' }}
+                            style={{ maxHeight: '90vh', maxWidth: '1100px', width: '100%', background: 'var(--bg-main)', borderRadius: '16px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 0 50px rgba(0,0,0,0.5)', cursor: 'default' }}
                         >
-                            <div style={{ padding: '1rem 2rem', borderBottom: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', background: 'var(--glass-bg)' }}>
+                            <div style={{ padding: '1.2rem 2rem', borderBottom: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--glass-bg)' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                                    <h3 style={{ margin: 0, fontSize: '1.3rem', color: '#fff', fontWeight: '700' }}>{selectedCert.title}</h3>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.85rem', color: 'var(--secondary)', opacity: 0.9 }}>
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><FaBuilding size={12} /> {selectedCert.issuer}</span>
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><FaTrophy size={11} /> {selectedCert.event}</span>
+                                        <span style={{ padding: '0.1rem 0.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', fontSize: '0.75rem', color: '#fff' }}>{selectedCert.category}</span>
+                                    </div>
+                                </div>
                                 <button 
                                     onClick={() => setSelectedCert(null)}
                                     style={{ background: 'rgba(255, 255, 255, 0.1)', border: 'none', color: '#fff', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: '0.2s' }}
                                     onMouseOver={(e) => e.target.style.background = 'rgba(239, 68, 68, 0.6)'}
                                     onMouseOut={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.1)'}
+                                    aria-label="Close modal"
                                 >
                                     <FaTimes size={18} style={{ pointerEvents: 'none' }} />
                                 </button>
                             </div>
                             
-                            <div style={{ flexGrow: 1, backgroundColor: '#1a1a1a', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: selectedCert.type === 'image' ? '2rem' : '0' }}>
+                            <div style={{ flexGrow: 1, height: '70vh', backgroundColor: '#1a1a1a', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: selectedCert.type === 'image' ? '2rem' : '0' }}>
                                 {selectedCert.type === 'image' ? (
                                     <img
                                         src={selectedCert.file}
-                                        alt="Verified Certificate"
+                                        alt={selectedCert.title}
                                         style={{
                                             maxWidth: '100%',
                                             maxHeight: '100%',
                                             objectFit: 'contain',
-                                            borderRadius: '8px'
+                                            borderRadius: '8px',
+                                            boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
                                         }}
                                     />
                                 ) : (
@@ -171,8 +216,11 @@ const Certificates = () => {
                                             width: '100%',
                                             height: '100%',
                                             border: 'none',
-                                            background: '#fff'
+                                            background: '#fff',
+                                            transform: 'scale(1.02)',
+                                            transformOrigin: 'center'
                                         }}
+                                        title={selectedCert.title}
                                     />
                                 )}
                             </div>

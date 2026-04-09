@@ -16,7 +16,7 @@ const About = () => {
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    style={{ position: 'relative' }}
+                     style={{ position: 'relative' }}
                 >
                     <div className="glass-card" style={{ padding: '10px', borderRadius: '24px', transform: 'rotate(-2deg)' }}>
                         <img

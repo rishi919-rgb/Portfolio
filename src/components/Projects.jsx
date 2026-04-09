@@ -203,7 +203,7 @@ const Projects = () => {
                                     <span className="project-badge">FLAGSHIP PROJECT</span>
                                     <div className="project-status">
                                         <span className="status-pulse"></span>
-                                        <span>Live</span>
+                                        <span>Deployment in Progress</span>
                                     </div>
                                 </div>
                                 <h3 className="project-hero-title">{p.title}</h3>
