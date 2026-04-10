@@ -21,6 +21,7 @@ import pdf8 from '../assets/Images/certificates/b8686d9a-a9d6-42a4-a1af-37a49e11
 
 const Certificates = () => {
     const [selectedCert, setSelectedCert] = useState(null);
+    const [visibleCount, setVisibleCount] = useState(8);
 
     const credentialList = [
         { id: 'img-1', file: cert1, type: "image", title: "Appian AI Application Challenge", event: "Shaastra 2026", issuer: "IIT Madras", category: "Participation" },
@@ -61,7 +62,7 @@ const Certificates = () => {
                     justifyContent: 'center',
                     gap: '1.5rem'
                 }}>
-                    {credentialList.map((cert, index) => (
+                    {credentialList.slice(0, visibleCount).map((cert, index) => (
                         <motion.div
                             key={cert.id}
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -141,6 +142,37 @@ const Certificates = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {credentialList.length > 8 && (
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+                        <button
+                            onClick={() => setVisibleCount(prev => prev === 8 ? credentialList.length : 8)}
+                            style={{
+                                padding: '0.8rem 2rem',
+                                borderRadius: '50px',
+                                background: 'transparent',
+                                border: '1px solid var(--secondary)',
+                                color: 'var(--secondary)',
+                                cursor: 'pointer',
+                                fontWeight: '600',
+                                transition: 'all 0.3s ease',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem'
+                            }}
+                            onMouseOver={(e) => {
+                                e.target.style.background = 'var(--secondary)';
+                                e.target.style.color = '#fff';
+                            }}
+                            onMouseOut={(e) => {
+                                e.target.style.background = 'transparent';
+                                e.target.style.color = 'var(--secondary)';
+                            }}
+                        >
+                            {visibleCount === 8 ? 'Load More Credentials' : 'Show Less'}
+                        </button>
+                    </div>
+                )}
             </div>
 
             {/* Smart Document Modal */}

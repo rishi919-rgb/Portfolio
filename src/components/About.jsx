@@ -34,16 +34,16 @@ const About = () => {
 
                 {/* Right: Content & Stats */}
                 <div>
-                    <h2 className="section-title" style={{ textAlign: 'left', margin: 0, marginBottom: '2rem' }}>
+                    <h2 className="section-title" style={{ textAlign: 'left', margin: 0, marginBottom: '1.5rem' }}>
                         About Me.
                     </h2>
 
-                    <p style={{ fontSize: '1.15rem', lineHeight: '1.8', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                        I am a <strong>2nd Semester Computer Science student</strong> at Coding Gita x Swaminarayan University.
+                    <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+                        Computer Science student crafting digital experiences at <strong>Coding Gita</strong>. I architect full-stack solutions with a passion for clean code and scalable systems — from MongoDB backends to React frontends. Driven by curiosity, fueled by challenge.
                     </p>
 
-                    <p style={{ fontSize: '1.15rem', lineHeight: '1.8', color: 'var(--text-muted)', marginBottom: '3rem' }}>
-                        My focus is on <strong>building logic and foundations</strong>. I enjoy solving algorithmic problems and creating functional web solutions that work efficiently. I'm constantly learning new patterns to write cleaner code.
+                    <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-muted)', marginBottom: '2rem' }}>
+                        I thrive on solving complex algorithmic problems and transforming ideas into production-ready applications. My recent work spans AI integrations, real-time data systems, and intuitive user interfaces that prioritize both performance and experience.
                     </p>
 
                     {/* Stats Grid - Visible & Styled */}
