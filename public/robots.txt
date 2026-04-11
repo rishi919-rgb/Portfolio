@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rishikesh-singh.vercel.app/sitemap.xml
