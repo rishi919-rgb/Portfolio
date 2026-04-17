@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaExternalLinkAlt, FaGithub, FaTimes } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaTimes, FaYoutube } from 'react-icons/fa';
 
 const WebClonesModal = ({ isOpen, onClose, clones }) => {
     if (!isOpen) return null;
@@ -29,7 +29,7 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.95, y: 30 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+                onClick={(e) => e.stopPropagation()}
                 className="glass-card"
                 style={{
                     width: '100%',
@@ -39,7 +39,7 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                     padding: '3rem',
                     borderRadius: '24px',
                     position: 'relative',
-                    background: 'var(--bg-dark)', // Use standard background for content area
+                    background: 'var(--bg-dark)',
                 }}
             >
                 {/* Close Button */}
@@ -78,8 +78,8 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                 {/* Clones Grid */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                    gap: '2rem'
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: '1.5rem'
                 }}>
                     {clones.map((site, index) => (
                         <div
@@ -91,10 +91,11 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                                 overflow: 'hidden',
                                 border: '1px solid var(--glass-border)',
                                 background: 'var(--glass-bg)',
-                                transition: 'all 0.3s'
+                                transition: 'all 0.3s',
+                                height: '100%'
                             }}
                         >
-                            <div style={{ height: '180px', width: '100%', overflow: 'hidden', position: 'relative' }}>
+                            <div style={{ height: '160px', width: '100%', overflow: 'hidden', position: 'relative' }}>
                                 <img
                                     src={site.img}
                                     alt={site.title}
@@ -104,24 +105,131 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                                 />
                             </div>
 
-                            <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-main)' }}>{site.title}</h3>
-                                <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', fontSize: '0.95rem', lineHeight: '1.5', flexGrow: 1 }}>{site.desc}</p>
+                            <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
+                                    <h3 style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-main)', margin: 0 }}>{site.title}</h3>
+                                    <span style={{
+                                        background: 'var(--secondary)',
+                                        color: '#000',
+                                        padding: '0.15rem 0.5rem',
+                                        borderRadius: '6px',
+                                        fontSize: '0.65rem',
+                                        fontWeight: '700',
+                                        flexShrink: 0
+                                    }}>
+                                        {index + 1}/6
+                                    </span>
+                                </div>
+                                <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', fontSize: '0.85rem', lineHeight: '1.5', flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{site.desc}</p>
 
-                                <div style={{ display: 'flex', gap: '1rem', marginTop: 'auto' }}>
-                                    <a href={site.demo} target="_blank" rel="noopener noreferrer"
-                                        style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none', color: 'var(--secondary)', fontWeight: '600', fontSize: '0.9rem' }}>
-                                        <FaExternalLinkAlt size={12} /> Live Demo
+                                <div className="clone-actions">
+                                    <a href={site.demo} target="_blank" rel="noopener noreferrer" className="clone-btn clone-btn--demo">
+                                        <FaExternalLinkAlt size={10} /> Demo
                                     </a>
-                                    <a href={site.repo} target="_blank" rel="noopener noreferrer"
-                                        style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none', color: 'var(--text-muted)', fontWeight: '500', fontSize: '0.9rem' }}>
-                                        <FaGithub size={14} /> Source
+                                    <a href={site.repo} target="_blank" rel="noopener noreferrer" className="clone-btn clone-btn--repo">
+                                        <FaGithub size={12} /> Code
                                     </a>
+                                    {site.youtube && (
+                                        <a href={site.youtube} target="_blank" rel="noopener noreferrer" className="clone-btn clone-btn--youtube">
+                                            <FaYoutube size={12} /> Video
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
+
+                <style>{`
+                    @keyframes fadeInUp {
+                        from { opacity: 0; transform: translateY(10px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+
+                    .clone-actions {
+                        display: flex;
+                        flex-wrap: nowrap;
+                        gap: 0.5rem;
+                        margin-top: auto;
+                        animation: fadeInUp 0.3s ease forwards;
+                    }
+
+                    .clone-btn {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.3rem;
+                        text-decoration: none;
+                        font-weight: 700;
+                        font-size: 0.7rem;
+                        letter-spacing: 0.02em;
+                        padding: 0.45rem 0.75rem;
+                        min-height: 32px;
+                        border-radius: 6px;
+                        border: 1px solid;
+                        transition: all 0.2s ease;
+                        cursor: pointer;
+                        white-space: nowrap;
+                        flex: 1;
+                    }
+
+                    .clone-btn:hover {
+                        transform: translateY(-1px);
+                        filter: brightness(1.08);
+                    }
+
+                    .clone-btn--demo {
+                        background: var(--secondary);
+                        color: #000;
+                        border-color: var(--secondary);
+                    }
+
+                    .clone-btn--demo:hover {
+                        background: #3b82f6;
+                        border-color: #3b82f6;
+                        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+                    }
+
+                    .clone-btn--repo {
+                        background: rgba(255, 255, 255, 0.04);
+                        color: var(--text-muted);
+                        border-color: var(--glass-border);
+                    }
+
+                    .clone-btn--repo:hover {
+                        background: rgba(255, 255, 255, 0.08);
+                        color: var(--text-main);
+                        border-color: var(--secondary);
+                    }
+
+                    .clone-btn--youtube {
+                        background: #FF4D4D;
+                        color: #fff;
+                        border-color: #FF4D4D;
+                    }
+
+                    .clone-btn--youtube:hover {
+                        background: #dc2626;
+                        border-color: #dc2626;
+                        box-shadow: 0 4px 12px rgba(255, 77, 77, 0.25);
+                    }
+
+                    @media (max-width: 900px) {
+                        .clone-actions {
+                            flex-wrap: wrap;
+                        }
+                        
+                        .clone-btn {
+                            flex: 0 1 calc(50% - 0.25rem);
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .clone-btn {
+                            flex: 1 1 100%;
+                        }
+                    }
+                `}</style>
             </motion.div>
         </motion.div>
     );

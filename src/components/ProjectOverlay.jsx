@@ -85,13 +85,13 @@ const ProjectOverlay = () => {
                     transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                     style={{
                         position: 'relative',
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        border: `1px solid rgba(255,255,255,0.1)`,
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: `1px solid rgba(255,255,255,0.15)`,
                         borderTop: `1px solid rgba(255,255,255,0.3)`,
                         borderRadius: '24px',
                         maxWidth: '1000px',
                         width: '100%',
-                        margin: 'auto', // Ensures centering when content is smaller than viewport
+                        margin: 'auto',
                         boxShadow: `0 30px 60px -15px ${project.accent}60`,
                         backdropFilter: 'blur(40px)',
                         zIndex: 10000

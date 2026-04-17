@@ -152,12 +152,12 @@ const Projects = () => {
     ];
 
     const webClones = [
-        { title: "Santa Cruz", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/santacruz/index.html", img: shot6 },
-        { title: "Yeti Cycles", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/yeticycles/index.html", img: shot5 },
-        { title: "Disney+ Clone", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/disney/index.html", img: shot1 },
-        { title: "CoffeeHouse", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/coffee/index.html", img: shot2 },
-        { title: "Western Rise", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/westernrise/index.html", img: shot3 },
-        { title: "Celestial AI", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/Celestial/index.html", img: shot4 }
+        { title: "Santa Cruz", desc: "Pixel-perfect recreation of the iconic surf & skate brand's website with dynamic grids and vibrant aesthetics.", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/santacruz/index.html", youtube: "https://youtu.be/4YDPAdaPmGk", repo: "https://github.com/rishi919-rgb/AssignmentsCG/tree/main/Web%20Clones/santacruz", img: shot6 },
+        { title: "Yeti Cycles", desc: "High-end bicycle brand website clone featuring bold typography, smooth scrolling, and striking product showcases.", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/yeticycles/index.html", youtube: "https://youtu.be/yge2ju4-7f0", repo: "https://github.com/rishi919-rgb/AssignmentsCG/tree/main/Web%20Clones/yeticycles", img: shot5 },
+        { title: "Disney+ Clone", desc: "Streaming platform clone with immersive hero sections, carousel sliders, and signature Disney+ dark theme UI.", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/disney/index.html", youtube: "https://youtu.be/YNn9YmUoiOc", repo: "https://github.com/rishi919-rgb/AssignmentsCG/tree/main/Web%20Clones/disney", img: shot1 },
+        { title: "CoffeeHouse", desc: "Warm, inviting coffee shop website featuring elegant typography, menu showcases, and cozy atmosphere design.", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/coffee/index.html", youtube: "https://youtu.be/AVgf1M_Z3V4", repo: "https://github.com/rishi919-rgb/AssignmentsCG/tree/main/Web%20Clones/coffee", img: shot2 },
+        { title: "Western Rise", desc: "Outdoor apparel brand recreation with earthy tones, rugged imagery, and sophisticated e-commerce layout.", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/westernrise/index.html", youtube: "https://youtu.be/Zx8Xwf-DEuk", repo: "https://github.com/rishi919-rgb/AssignmentsCG/tree/main/Web%20Clones/westernrise", img: shot3 },
+        { title: "Celestial AI", desc: "Futuristic AI product landing page with cosmic visuals, particle effects, and sleek dark mode interface.", demo: "https://rishikesh-side-project.vercel.app/Web%20Clones/Celestial/index.html", youtube: "https://youtu.be/uEgo9FEwLg4", repo: "https://github.com/rishi919-rgb/AssignmentsCG/tree/main/Web%20Clones/Celestial", img: shot4 }
     ];
 
     const games = [
@@ -269,14 +269,11 @@ const Projects = () => {
                                     <div className="card-tech-row">
                                         {p.tech.map((t, i) => <span key={i} title={t.name}>{t.icon}</span>)}
                                     </div>
-                                    <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
-                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="YouTube Demo">
-                                            <FaYoutube size={16} />
-                                        </a>
-                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="GitHub Profile">
+                                    <div className="card-actions">
+                                        <a href={p.repo} target="_blank" rel="noreferrer" className="card-icon-btn" style={{ color: p.accent }} title="GitHub Repository">
                                             <FaGithub size={16} />
                                         </a>
-                                        <Link to={`/project/${p.id}`} className="card-link" style={{ color: p.accent, fontWeight: 'bold' }}>
+                                        <Link to={`/project/${p.id}`} className="card-button" style={{ color: p.accent, background: `${p.accent}18`, borderColor: `${p.accent}55` }}>
                                             Deep Dive →
                                         </Link>
                                     </div>
@@ -310,14 +307,11 @@ const Projects = () => {
                                     <div className="card-tech-row">
                                         {p.tech.map((t, i) => <span key={i} title={t.name}>{t.icon}</span>)}
                                     </div>
-                                    <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
-                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="YouTube Demo">
-                                            <FaYoutube size={16} />
-                                        </a>
-                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="GitHub Profile">
+                                    <div className="card-actions">
+                                        <a href={p.repo} target="_blank" rel="noreferrer" className="card-icon-btn" style={{ color: p.accent }} title="GitHub Repository">
                                             <FaGithub size={16} />
                                         </a>
-                                        <Link to={`/project/${p.id}`} className="card-link" style={{ color: p.accent, fontWeight: 'bold' }}>
+                                        <Link to={`/project/${p.id}`} className="card-button" style={{ color: p.accent, background: `${p.accent}18`, borderColor: `${p.accent}55` }}>
                                             Deep Dive →
                                         </Link>
                                     </div>
@@ -351,11 +345,11 @@ const Projects = () => {
                                     <div className="card-tech-row">
                                         {p.tech.map((t, i) => <span key={i} title={t.name}>{t.icon}</span>)}
                                     </div>
-                                    <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
-                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="GitHub Profile">
+                                    <div className="card-actions">
+                                        <a href={p.repo} target="_blank" rel="noreferrer" className="card-icon-btn" style={{ color: p.accent }} title="GitHub Repository">
                                             <FaGithub size={16} />
                                         </a>
-                                        <Link to={`/project/${p.id}`} className="card-link" style={{ color: p.accent, fontWeight: 'bold' }}>
+                                        <Link to={`/project/${p.id}`} className="card-button" style={{ color: p.accent, background: `${p.accent}18`, borderColor: `${p.accent}55` }}>
                                             Deep Dive →
                                         </Link>
                                     </div>
@@ -712,15 +706,49 @@ const Projects = () => {
                     font-size: 1.1rem;
                 }
 
-                .card-link {
-                    font-size: 0.8rem;
-                    font-weight: 700;
-                    text-decoration: none;
-                    transition: opacity 0.2s;
+                .card-actions {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.7rem;
                 }
 
-                .card-link:hover {
-                    opacity: 0.8;
+                .card-icon-btn {
+                    width: 38px;
+                    height: 38px;
+                    border-radius: 999px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    border: 1px solid rgba(255, 255, 255, 0.12);
+                    background: rgba(255, 255, 255, 0.03);
+                    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+                }
+
+                .card-icon-btn:hover {
+                    transform: translateY(-2px);
+                    opacity: 1;
+                    background: rgba(255, 255, 255, 0.06);
+                }
+
+                .card-button {
+                    min-height: 38px;
+                    padding: 0.65rem 1rem;
+                    border-radius: 999px;
+                    border: 1px solid;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    font-size: 0.82rem;
+                    font-weight: 800;
+                    letter-spacing: 0.2px;
+                    transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease;
+                }
+
+                .card-button:hover {
+                    transform: translateY(-2px);
+                    filter: brightness(1.08);
                 }
 
                 /* Special Card (UI Clones) */
