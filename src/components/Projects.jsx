@@ -442,13 +442,13 @@ const Projects = () => {
                     color: var(--text-main);
                 }
 
-                /* Projects Grid - 3 columns on desktop */
-                .projects-grid {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 1.5rem;
-                    margin-bottom: 4rem;
-                }
+                 /* Projects Grid - 3 columns on desktop */
+                 .projects-grid {
+                     display: grid;
+                     grid-template-columns: repeat(3, 1fr);
+                     gap: 1.2rem;
+                     margin-bottom: 3rem;
+                 }
 
                 /* Base Card */
                 .project-card {
@@ -884,16 +884,16 @@ const Projects = () => {
                     }
                 }
 
-                /* ========== MOBILE (768px) ========== */
-                @media (max-width: 768px) {
-                    .projects-section {
-                        padding: 3rem 1rem;
-                    }
+                 /* ========== MOBILE (768px) ========== */
+                 @media (max-width: 768px) {
+                     .projects-section {
+                         padding: 2.5rem 0.75rem;
+                     }
 
-                    .projects-grid {
-                        grid-template-columns: 1fr;
-                        gap: 1.2rem;
-                    }
+                     .projects-grid {
+                         grid-template-columns: 1fr;
+                         gap: 1rem;
+                     }
 
                     .project-card--hero {
                         grid-column: span 1;
@@ -929,50 +929,95 @@ const Projects = () => {
                     }
                 }
 
-                /* ========== SMALL MOBILE (480px) ========== */
-                @media (max-width: 480px) {
-                    .projects-header {
-                        margin-bottom: 2rem;
-                    }
+                 /* ========== SMALL MOBILE (480px) ========== */
+                 @media (max-width: 480px) {
+                     .projects-header {
+                         margin-bottom: 1.5rem;
+                     }
 
-                    .project-hero-content {
-                        padding: 1.5rem;
-                    }
+                     .projects-heading {
+                         font-size: 1.6rem;
+                     }
 
-                    .project-hero-top {
-                        flex-direction: column;
-                        align-items: flex-start;
-                        gap: 0.5rem;
-                    }
+                     .project-hero-content {
+                         padding: 1.2rem;
+                     }
 
-                    .project-hero-links {
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
+                     .project-hero-top {
+                         flex-direction: column;
+                         align-items: flex-start;
+                         gap: 0.4rem;
+                     }
 
-                    .project-hero-tech {
-                        gap: 0.5rem;
-                    }
+                     .project-hero-links {
+                         flex-direction: column;
+                         align-items: flex-start;
+                         gap: 0.6rem;
+                     }
 
-                    .tech-badge {
-                        padding: 0.3rem 0.6rem;
-                        font-size: 0.7rem;
-                    }
+                     .project-hero-tech {
+                         gap: 0.4rem;
+                     }
 
-                    .project-card-footer {
-                        flex-direction: column;
-                        gap: 1rem;
-                        align-items: flex-start;
-                    }
+                     .tech-badge {
+                         padding: 0.25rem 0.5rem;
+                         font-size: 0.65rem;
+                     }
 
-                    .mini-grid {
-                        grid-template-columns: 1fr;
-                    }
+                     .project-card-footer {
+                         flex-direction: column;
+                         gap: 0.8rem;
+                         align-items: flex-start;
+                     }
 
-                    .mini-card {
-                        flex-direction: row;
-                    }
-                }
+                     .card-icon-btn {
+                         width: 32px;
+                         height: 32px;
+                         font-size: 1rem;
+                     }
+
+                     .card-button {
+                         padding: 0.55rem 1rem;
+                         font-size: 0.78rem;
+                         min-height: 34px;
+                         width: 100%;
+                     }
+
+                     .card-icon-btn {
+                         width: 34px;
+                         height: 34px;
+                         font-size: 1.1rem;
+                     }
+
+                     .card-button {
+                         padding: 0.5rem 0.8rem;
+                         font-size: 0.75rem;
+                         min-height: 34px;
+                         width: 100%;
+                     }
+
+                     .mini-header {
+                         gap: 0.8rem;
+                     }
+
+                     .mini-grid {
+                         grid-template-columns: 1fr;
+                         gap: 0.6rem;
+                     }
+
+                     .mini-card {
+                         padding: 0.6rem;
+                     }
+
+                     .mini-card img {
+                         width: 28px;
+                         height: 28px;
+                     }
+
+                     .mini-card span {
+                         font-size: 0.8rem;
+                     }
+                 }
             `}</style>
         </section>
     );

@@ -24,24 +24,24 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
             }}
             onClick={onClose}
         >
-            <motion.div
-                initial={{ scale: 0.95, y: 30 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.95, y: 30 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                onClick={(e) => e.stopPropagation()}
-                className="glass-card"
-                style={{
-                    width: '100%',
-                    maxWidth: '1100px',
-                    maxHeight: '90vh',
-                    overflowY: 'auto',
-                    padding: '3rem',
-                    borderRadius: '24px',
-                    position: 'relative',
-                    background: 'var(--bg-dark)',
-                }}
-            >
+                <motion.div
+                    initial={{ scale: 0.95, y: 30 }}
+                    animate={{ scale: 1, y: 0 }}
+                    exit={{ scale: 0.95, y: 30 }}
+                    transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="glass-card"
+                    style={{
+                        width: '100%',
+                        maxWidth: '1100px',
+                        maxHeight: '90vh',
+                        overflowY: 'auto',
+                        padding: '2.5rem',
+                        borderRadius: '24px',
+                        position: 'relative',
+                        background: 'var(--bg-dark)',
+                    }}
+                >
                 {/* Close Button */}
                 <button
                     onClick={onClose}
@@ -79,7 +79,7 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '1.5rem'
+                    gap: '1rem'
                 }}>
                     {clones.map((site, index) => (
                         <div
@@ -87,7 +87,7 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                             style={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                borderRadius: '16px',
+                                borderRadius: '12px',
                                 overflow: 'hidden',
                                 border: '1px solid var(--glass-border)',
                                 background: 'var(--glass-bg)',
@@ -95,7 +95,7 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                                 height: '100%'
                             }}
                         >
-                            <div style={{ height: '160px', width: '100%', overflow: 'hidden', position: 'relative' }}>
+                            <div style={{ height: '140px', width: '100%', overflow: 'hidden', position: 'relative' }}>
                                 <img
                                     src={site.img}
                                     alt={site.title}
@@ -105,33 +105,33 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                                 />
                             </div>
 
-                            <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                                    <h3 style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-main)', margin: 0 }}>{site.title}</h3>
+                            <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.4rem' }}>
+                                    <h3 style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--text-main)', margin: 0, lineHeight: '1.2' }}>{site.title}</h3>
                                     <span style={{
                                         background: 'var(--secondary)',
                                         color: '#000',
-                                        padding: '0.15rem 0.5rem',
-                                        borderRadius: '6px',
-                                        fontSize: '0.65rem',
+                                        padding: '0.1rem 0.4rem',
+                                        borderRadius: '5px',
+                                        fontSize: '0.6rem',
                                         fontWeight: '700',
                                         flexShrink: 0
                                     }}>
                                         {index + 1}/6
                                     </span>
                                 </div>
-                                <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', fontSize: '0.85rem', lineHeight: '1.5', flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{site.desc}</p>
+                                <p style={{ color: 'var(--text-muted)', marginBottom: '0.8rem', fontSize: '0.8rem', lineHeight: '1.4', flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{site.desc}</p>
 
                                 <div className="clone-actions">
                                     <a href={site.demo} target="_blank" rel="noopener noreferrer" className="clone-btn clone-btn--demo">
-                                        <FaExternalLinkAlt size={10} /> Demo
+                                        <FaExternalLinkAlt size={9} /> Demo
                                     </a>
                                     <a href={site.repo} target="_blank" rel="noopener noreferrer" className="clone-btn clone-btn--repo">
-                                        <FaGithub size={12} /> Code
+                                        <FaGithub size={11} /> Code
                                     </a>
                                     {site.youtube && (
                                         <a href={site.youtube} target="_blank" rel="noopener noreferrer" className="clone-btn clone-btn--youtube">
-                                            <FaYoutube size={12} /> Video
+                                            <FaYoutube size={11} /> Video
                                         </a>
                                     )}
                                 </div>
@@ -146,10 +146,51 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                         to { opacity: 1; transform: translateY(0); }
                     }
 
+                    /* Modal container responsive padding */
+                    .glass-card {
+                        padding: 2.5rem !important;
+                    }
+
+                    @media (max-width: 768px) {
+                        .glass-card {
+                            padding: 1.5rem !important;
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .glass-card {
+                            padding: 1rem !important;
+                        }
+                    }
+
+                    /* Base: 3 columns for desktop */
+                    @media (min-width: 1025px) {
+                        div[style*="grid-template-columns"] {
+                            grid-template-columns: repeat(3, 1fr) !important;
+                            gap: 1rem !important;
+                        }
+                    }
+
+                    /* Tablet: 2 columns */
+                    @media (max-width: 1024px) {
+                        div[style*="grid-template-columns"] {
+                            grid-template-columns: repeat(2, 1fr) !important;
+                            gap: 0.9rem !important;
+                        }
+                    }
+
+                    /* Mobile: 1 column */
+                    @media (max-width: 640px) {
+                        div[style*="grid-template-columns"] {
+                            grid-template-columns: 1fr !important;
+                            gap: 0.8rem !important;
+                        }
+                    }
+
                     .clone-actions {
                         display: flex;
                         flex-wrap: nowrap;
-                        gap: 0.5rem;
+                        gap: 0.4rem;
                         margin-top: auto;
                         animation: fadeInUp 0.3s ease forwards;
                     }
@@ -158,13 +199,13 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                         display: inline-flex;
                         align-items: center;
                         justify-content: center;
-                        gap: 0.3rem;
+                        gap: 0.25rem;
                         text-decoration: none;
                         font-weight: 700;
-                        font-size: 0.7rem;
-                        letter-spacing: 0.02em;
-                        padding: 0.45rem 0.75rem;
-                        min-height: 32px;
+                        font-size: 0.65rem;
+                        letter-spacing: 0.01em;
+                        padding: 0.4rem 0.65rem;
+                        min-height: 28px;
                         border-radius: 6px;
                         border: 1px solid;
                         transition: all 0.2s ease;
@@ -175,7 +216,7 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
 
                     .clone-btn:hover {
                         transform: translateY(-1px);
-                        filter: brightness(1.08);
+                        filter: brightness(1.1);
                     }
 
                     .clone-btn--demo {
@@ -214,19 +255,50 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                         box-shadow: 0 4px 12px rgba(255, 77, 77, 0.25);
                     }
 
-                    @media (max-width: 900px) {
+                    /* ========== TABLET (1024px) ========== */
+                    @media (max-width: 1024px) {
                         .clone-actions {
                             flex-wrap: wrap;
                         }
                         
                         .clone-btn {
-                            flex: 0 1 calc(50% - 0.25rem);
+                            flex: 0 1 calc(50% - 0.2rem);
                         }
                     }
 
+                    /* ========== MOBILE (768px) ========== */
+                    @media (max-width: 768px) {
+                        .clone-actions {
+                            flex-wrap: wrap;
+                            gap: 0.3rem;
+                        }
+                        
+                        .clone-btn {
+                            flex: 0 1 calc(50% - 0.15rem);
+                            padding: 0.35rem 0.55rem;
+                            font-size: 0.6rem;
+                            min-height: 24px;
+                            gap: 0.2rem;
+                        }
+
+                        .clone-btn svg {
+                            font-size: 0.8em;
+                        }
+                    }
+
+                    /* ========== SMALL MOBILE (480px) ========== */
                     @media (max-width: 480px) {
+                        .clone-actions {
+                            flex-direction: column;
+                            gap: 0.3rem;
+                        }
+
                         .clone-btn {
                             flex: 1 1 100%;
+                            width: 100%;
+                            justify-content: center;
+                            padding: 0.4rem 0.7rem;
+                            font-size: 0.65rem;
                         }
                     }
                 `}</style>
