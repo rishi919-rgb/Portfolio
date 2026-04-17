@@ -4,6 +4,19 @@ import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import ThemeToggle from './ThemeToggle';
 
+const navLinks = [
+    { name: 'Home', href: '#hero', id: 'hero' },
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Certificates', href: '#certificates', id: 'certificates' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Figma', href: '#figma-designs', id: 'figma-designs' },
+    { name: 'Hackathons', href: '#hackathons', id: 'hackathons' },
+    { name: 'Achievements', href: '#achievements', id: 'achievements' },
+    { name: 'Education', href: '#education', id: 'education' },
+    { name: 'Community', href: '#code-community', id: 'code-community' }
+];
+
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -50,21 +63,35 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Scroll Spy for Active Section
+    // Scroll spy based on viewport position rather than intersection threshold.
+    // This keeps long sections like Projects and edge-aligned sections like Hackathons
+    // highlighted reliably while the user scrolls.
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
+        const updateActiveSection = () => {
+            const scrollPosition = window.scrollY + 140;
+            let currentSection = 'hero';
+
+            navLinks.forEach(link => {
+                const element = document.getElementById(link.id);
+                if (!element) return;
+
+                const sectionTop = element.offsetTop;
+                if (scrollPosition >= sectionTop) {
+                    currentSection = link.id;
                 }
             });
-        }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+            setActiveSection(currentSection);
+        };
 
-        return () => observer.disconnect();
+        updateActiveSection();
+        window.addEventListener('scroll', updateActiveSection, { passive: true });
+        window.addEventListener('resize', updateActiveSection);
+
+        return () => {
+            window.removeEventListener('scroll', updateActiveSection);
+            window.removeEventListener('resize', updateActiveSection);
+        };
     }, []);
 
     // Lock body scroll when menu is open
@@ -72,19 +99,6 @@ const Navbar = () => {
         if (isOpen) document.body.style.overflow = 'hidden';
         else document.body.style.overflow = 'unset';
     }, [isOpen]);
-
-    const navLinks = [
-        { name: 'Home', href: '#hero', id: 'hero' },
-        { name: 'About', href: '#about', id: 'about' },
-        { name: 'Certificates', href: '#certificates', id: 'certificates' },
-        { name: 'Skills', href: '#skills', id: 'skills' },
-        { name: 'Projects', href: '#projects', id: 'projects' },
-        { name: 'Figma', href: '#figma-designs', id: 'figma-designs' },
-        { name: 'Hackathons', href: '#hackathons', id: 'hackathons' },
-        { name: 'Achievements', href: '#achievements', id: 'achievements' },
-        { name: 'Education', href: '#education', id: 'education' },
-        { name: 'Community', href: '#code-community', id: 'code-community' }
-    ];
 
     return (
         <>
