@@ -74,7 +74,7 @@ const Hackathons = () => {
                                     display: 'grid', 
                                     gridTemplateColumns: '1fr 1fr', 
                                     gap: '3px',
-                                    height: '300px',
+                                    height: 'clamp(180px, 40vw, 300px)',
                                     background: '#000'
                                 }}>
                                     {hack.images.map((img, i) => (
@@ -96,8 +96,7 @@ const Hackathons = () => {
                                 </div>
                             )}
 
-                            {/* Content */}
-                            <div style={{ padding: '2rem' }}>
+                                <div style={{ padding: 'clamp(1.2rem, 3vw, 2rem)' }}>
 
                                 {/* Header */}
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
@@ -117,7 +116,7 @@ const Hackathons = () => {
                                         }}>
                                             {hack.track}
                                         </div>
-                                        <h3 style={{ fontSize: '1.7rem', color: 'var(--text-main)', marginBottom: '0.3rem', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                                        <h3 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.7rem)', color: 'var(--text-main)', marginBottom: '0.3rem', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
                                             <FaLaptopCode color={hack.accentColor} /> {hack.name}
                                         </h3>
                                         <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '0.5rem', fontStyle: 'italic' }}>{hack.tagline}</p>

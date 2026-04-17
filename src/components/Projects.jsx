@@ -950,9 +950,9 @@ const Projects = () => {
                      }
 
                      .project-hero-links {
-                         flex-direction: column;
-                         align-items: flex-start;
-                         gap: 0.6rem;
+                         flex-wrap: wrap;
+                         gap: 0.7rem;
+                         align-items: center;
                      }
 
                      .project-hero-tech {

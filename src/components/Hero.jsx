@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { FaGithub, FaYoutube, FaFileAlt } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import { TypeAnimation } from 'react-type-animation';
 
 
 const Hero = () => {
-    // Resume modal state removed, directly downloading/viewing PDF now
 
     return (
+        <>
         <section id="hero" style={{
             minHeight: '100vh',
             display: 'flex',
@@ -16,16 +16,16 @@ const Hero = () => {
             justifyContent: 'center',
             position: 'relative',
             overflow: 'hidden',
-            paddingTop: '60px'
+            paddingTop: '80px',
+            paddingBottom: '2rem',
         }}>
-            {/* Resume Modal Removed */}
-
             <div className="container-width grid-halves hero-grid" style={{
                 display: 'grid',
                 gridTemplateColumns: '1.2fr 0.8fr',
                 gap: '4rem',
                 alignItems: 'center',
-                padding: '0 2rem'
+                padding: '0 2rem',
+                width: '100%',
             }}>
                 {/* Text Content */}
                 <motion.div
@@ -49,7 +49,7 @@ const Hero = () => {
                     </div>
 
                     <h1 style={{
-                        fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', // Reduced from 3rem/4.5rem
+                        fontSize: 'clamp(2rem, 7vw, 4rem)',
                         fontWeight: '900',
                         lineHeight: '1.1',
                         marginBottom: '1rem',
@@ -60,11 +60,11 @@ const Hero = () => {
                     </h1>
 
                     <h2 style={{
-                        fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
+                        fontSize: 'clamp(1.2rem, 4vw, 2.2rem)',
                         fontWeight: '500',
                         color: 'var(--text-muted)',
                         marginBottom: '2.5rem',
-                        minHeight: '40px' // Prevent layout shift during typing
+                        minHeight: '40px'
                     }}>
                         <TypeAnimation
                             sequence={[
@@ -119,7 +119,7 @@ const Hero = () => {
                     </div>
                 </motion.div>
 
-                {/* Hero Image - Tighter Crop & Scale */}
+                {/* Hero Image */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, y: 30 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -127,14 +127,14 @@ const Hero = () => {
                     style={{
                         position: 'relative',
                         display: 'flex',
-                        justifyContent: 'flex-end'
+                        justifyContent: 'center',
                     }}
                 >
                     <div style={{
                         position: 'relative',
                         width: '100%',
                         maxWidth: '380px',
-                        height: '450px',
+                        height: 'clamp(300px, 50vw, 450px)',
                         borderRadius: '24px',
                         overflow: 'hidden',
                         border: '1px solid var(--glass-border)',
@@ -154,14 +154,15 @@ const Hero = () => {
                                 width: '100%',
                                 height: '100%',
                                 objectFit: 'cover',
-                                objectPosition: 'center 20%', // Zoom in on upper 20% (face)
-                                transform: 'scale(1.1)' // Slight zoom to crop edges
+                                objectPosition: 'center 20%',
+                                transform: 'scale(1.1)'
                             }}
                         />
                     </div>
                 </motion.div>
             </div>
         </section>
+        </>
     );
 };
 

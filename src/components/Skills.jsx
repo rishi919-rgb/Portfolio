@@ -151,7 +151,7 @@ const Skills = () => {
                         viewport={{ once: true }}
                         style={{ 
                             marginTop: '6rem', 
-                            padding: '3rem', 
+                            padding: 'clamp(1.5rem, 4vw, 3rem)', 
                             maxWidth: '900px', 
                             background: 'rgba(255, 255, 255, 0.01)',
                             border: '1px solid var(--glass-border)',
@@ -182,7 +182,7 @@ const Skills = () => {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            gap: '5rem',
+                            gap: 'clamp(2rem, 6vw, 5rem)',
                             flexWrap: 'wrap'
                         }}>
                             {programmingLanguages.map((lang) => (

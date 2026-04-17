@@ -41,10 +41,11 @@ const ProjectOverlay = () => {
                     background: `radial-gradient(circle at 50% 50%, ${project.accent}20 0%, rgba(10, 15, 30, 0.98) 70%)`,
                     backdropFilter: 'blur(20px)',
                     display: 'flex',
-                    alignItems: 'center',
+                    alignItems: 'flex-start',
                     justifyContent: 'center',
                     overflowY: 'auto',
-                    padding: '2rem'
+                    padding: 'clamp(1rem, 4vw, 2rem)',
+                    paddingTop: 'clamp(4rem, 10vw, 5rem)',
                 }}
             >
                 {/* Close Button Background Area */}
@@ -57,13 +58,13 @@ const ProjectOverlay = () => {
                     whileTap={{ scale: 0.9 }}
                     style={{
                         position: 'fixed',
-                        top: '30px',
-                        right: '30px',
+                        top: '16px',
+                        right: '16px',
                         background: 'rgba(255,255,255,0.05)',
                         border: '1px solid rgba(255,255,255,0.2)',
                         color: '#fff',
-                        width: '50px',
-                        height: '50px',
+                        width: '44px',
+                        height: '44px',
                         borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
@@ -99,7 +100,7 @@ const ProjectOverlay = () => {
                     onClick={(e) => e.stopPropagation()} // Prevent closing when clicking card
                 >
                     {/* Content */}
-                    <div style={{ padding: '3rem' }}>
+                    <div style={{ padding: 'clamp(1.5rem, 5vw, 3rem)' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                             <span style={{
                                 padding: '0.4rem 1rem',
@@ -115,8 +116,8 @@ const ProjectOverlay = () => {
                             </span>
                         </div>
                         
-                        <h1 style={{ fontSize: '3.5rem', margin: '0 0 1rem 0', color: '#fff', fontWeight: '800', letterSpacing: '-1px' }}>{project.title}</h1>
-                        <p style={{ fontSize: '1.25rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', maxWidth: '800px', lineHeight: 1.7 }}>{project.desc}</p>
+                        <h1 style={{ fontSize: 'clamp(1.8rem, 6vw, 3.5rem)', margin: '0 0 1rem 0', color: '#fff', fontWeight: '800', letterSpacing: '-1px' }}>{project.title}</h1>
+                        <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', maxWidth: '800px', lineHeight: 1.7 }}>{project.desc}</p>
 
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '3rem' }}>
                             {project.tech && project.tech.map((t, idx) => (
@@ -199,7 +200,7 @@ const ProjectOverlay = () => {
                             <img src={project.img} alt={project.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
                         </div>
                         
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '4rem', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '4rem', flexWrap: 'wrap' }}>
                             <motion.a 
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}

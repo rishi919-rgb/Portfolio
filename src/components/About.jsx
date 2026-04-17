@@ -8,8 +8,9 @@ const About = () => {
             <div className="container-width grid-halves" style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: '6rem',
-                alignItems: 'center'
+                gap: '3rem',
+                alignItems: 'center',
+                overflow: 'hidden',
             }}>
                 {/* Left: Casual Image */}
                 <motion.div

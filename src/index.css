@@ -100,6 +100,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Restore default cursor on touch/mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+  a, button, [role="button"] {
+    cursor: pointer !important;
+  }
+}
+
 /* --- UTILITIES --- */
 .section-padding {
   padding: 6rem 2rem;
@@ -210,7 +220,7 @@ h4 {
 /* Responsive */
 @media (max-width: 768px) {
   .section-padding {
-    padding: 4rem 1.5rem;
+    padding: 3.5rem 1.25rem;
   }
 
   .section-title {
@@ -218,29 +228,32 @@ h4 {
     margin-bottom: 2rem;
   }
 
+  /* Stack all two-column grids vertically on mobile */
   .grid-halves {
     grid-template-columns: 1fr !important;
-    gap: 3rem !important;
+    gap: 2.5rem !important;
     display: flex !important;
-    flex-direction: column-reverse;
-    /* Image top, Text bottom usually? Or Text top? User code had Text first then Image. Column reverse makes Image TOP. Let's try Image Top for mobile profile. */
+    flex-direction: column;
   }
 
-  /* If we want Text Top on mobile, just use flex-direction: column. 
-     The DOM order is Text then Image. 
-     So 'column' puts Text top. 'column-reverse' puts Image top. 
-     For a portfolio "Hi I'm Rishi", text first is often better for SEO/Context.
-     Let's stick to Text Top (Standard flow).
-  */
+  /* Hero: Text on top, image below */
   .grid-halves.hero-grid {
     flex-direction: column;
-    /* Text Top */
   }
 
   /* Adjust container width for small screens */
   .container-width {
     width: 100%;
     padding: 0 1rem;
+  }
+
+  /* Show mobile nav on tablets too */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-nav-toggle {
+    display: flex !important;
   }
 }
 
@@ -249,29 +262,14 @@ h4 {
     font-size: 1.8rem;
   }
 
+  .section-padding {
+    padding: 3rem 1rem;
+  }
+
   /* Optimize glass cards for touch - less hover movement */
   .glass-card:hover {
     transform: translateY(-2px);
   }
-
-  /* --- MOBILE NAV TOGGLES --- */
-  .desktop-nav {
-    display: none !important;
-    /* Hide Desktop Nav */
-  }
-
-  .mobile-nav-toggle {
-    display: flex !important;
-    /* Show Mobile Nav */
-  }
-
-  /* Reposition Theme Toggle to Bottom Right on Mobile to clear top area */
-  /* We can target the theme toggle if it has a specific class or style, 
-     but since it's inline styles in React, we might need a class. 
-     I'll add a check in ThemeToggle component logic, or try to override here if possible, 
-     but React inline styles win. 
-     Let's rely on the React component update for Theme Toggle position. 
-  */
 }
 
 ::-webkit-scrollbar {

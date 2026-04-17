@@ -38,7 +38,7 @@ const Contact = () => {
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',
-            padding: '2rem' // Minimal padding to prevent overflow but stick edges
+            padding: 'clamp(1rem, 4vw, 2rem)',
         }}>
             <div className="container-width" style={{ maxWidth: '800px', width: '100%' }}>
 
@@ -94,7 +94,7 @@ const Contact = () => {
 
                 {/* Direct Contact Form */}
                 <div className="glass-card" style={{
-                    padding: '3rem',
+                    padding: 'clamp(1.5rem, 5vw, 3rem)',
                     maxWidth: '600px',
                     margin: '0 auto',
                     display: 'flex',

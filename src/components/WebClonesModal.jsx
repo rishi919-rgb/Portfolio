@@ -18,49 +18,51 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                 zIndex: 4000,
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center',
-                padding: '2rem',
-                overflowY: 'auto'
+                alignItems: 'flex-start',
+                padding: 'clamp(0.75rem, 3vw, 1.5rem)',
+                paddingTop: 'clamp(1rem, 5vw, 2rem)',
+                overflowY: 'auto',
             }}
             onClick={onClose}
         >
-                <motion.div
-                    initial={{ scale: 0.95, y: 30 }}
-                    animate={{ scale: 1, y: 0 }}
-                    exit={{ scale: 0.95, y: 30 }}
-                    transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                    onClick={(e) => e.stopPropagation()}
-                    className="glass-card"
-                    style={{
-                        width: '100%',
-                        maxWidth: '1100px',
-                        maxHeight: '90vh',
-                        overflowY: 'auto',
-                        padding: '2.5rem',
-                        borderRadius: '24px',
-                        position: 'relative',
-                        background: 'var(--bg-dark)',
-                    }}
-                >
+            <motion.div
+                initial={{ scale: 0.95, y: 30 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: 30 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                    width: '100%',
+                    maxWidth: '1100px',
+                    padding: 'clamp(1rem, 4vw, 2.5rem)',
+                    borderRadius: '24px',
+                    position: 'relative',
+                    background: 'var(--bg-dark)',
+                    border: '1px solid var(--glass-border)',
+                    margin: 'auto',
+                }}
+            >
                 {/* Close Button */}
                 <button
                     onClick={onClose}
                     style={{
                         position: 'absolute',
-                        top: '1.5rem',
-                        right: '1.5rem',
+                        top: '1rem',
+                        right: '1rem',
                         background: 'rgba(255,255,255,0.05)',
                         border: '1px solid var(--glass-border)',
                         color: 'var(--text-main)',
-                        width: '45px',
-                        height: '45px',
+                        width: '40px',
+                        height: '40px',
                         borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         cursor: 'pointer',
-                        fontSize: '1.2rem',
-                        transition: 'all 0.3s'
+                        fontSize: '1rem',
+                        transition: 'all 0.3s',
+                        flexShrink: 0,
+                        zIndex: 1,
                     }}
                     onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
@@ -68,19 +70,17 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                     <FaTimes />
                 </button>
 
-                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    <h2 style={{ fontSize: '2.5rem', color: 'var(--text-main)', marginBottom: '0.5rem', fontWeight: '800' }}>Frontend Clones</h2>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+                <div style={{ textAlign: 'center', marginBottom: '2rem', paddingRight: '2.5rem' }}>
+                    <h2 style={{ fontSize: 'clamp(1.4rem, 5vw, 2.5rem)', color: 'var(--text-main)', marginBottom: '0.5rem', fontWeight: '800' }}>
+                        Frontend Clones
+                    </h2>
+                    <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 1.1rem)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.5 }}>
                         A collection of pixel-perfect UI recreations focusing on aesthetic layouts and CSS proficiency.
                     </p>
                 </div>
 
                 {/* Clones Grid */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '1rem'
-                }}>
+                <div className="clones-grid">
                     {clones.map((site, index) => (
                         <div
                             key={index}
@@ -146,47 +146,28 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                         to { opacity: 1; transform: translateY(0); }
                     }
 
-                    /* Modal container responsive padding */
-                    .glass-card {
-                        padding: 2.5rem !important;
+                    /* Clones responsive grid */
+                    .clones-grid {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 1rem;
                     }
 
-                    @media (max-width: 768px) {
-                        .glass-card {
-                            padding: 1.5rem !important;
-                        }
-                    }
-
-                    @media (max-width: 480px) {
-                        .glass-card {
-                            padding: 1rem !important;
-                        }
-                    }
-
-                    /* Base: 3 columns for desktop */
-                    @media (min-width: 1025px) {
-                        div[style*="grid-template-columns"] {
-                            grid-template-columns: repeat(3, 1fr) !important;
-                            gap: 1rem !important;
-                        }
-                    }
-
-                    /* Tablet: 2 columns */
                     @media (max-width: 1024px) {
-                        div[style*="grid-template-columns"] {
-                            grid-template-columns: repeat(2, 1fr) !important;
-                            gap: 0.9rem !important;
+                        .clones-grid {
+                            grid-template-columns: repeat(2, 1fr);
+                            gap: 0.9rem;
                         }
                     }
 
-                    /* Mobile: 1 column */
-                    @media (max-width: 640px) {
-                        div[style*="grid-template-columns"] {
-                            grid-template-columns: 1fr !important;
-                            gap: 0.8rem !important;
+                    @media (max-width: 560px) {
+                        .clones-grid {
+                            grid-template-columns: 1fr;
+                            gap: 0.8rem;
                         }
                     }
 
+                    /* Clone action buttons */
                     .clone-actions {
                         display: flex;
                         flex-wrap: nowrap;
@@ -255,50 +236,29 @@ const WebClonesModal = ({ isOpen, onClose, clones }) => {
                         box-shadow: 0 4px 12px rgba(255, 77, 77, 0.25);
                     }
 
-                    /* ========== TABLET (1024px) ========== */
+                    /* Tablet: two buttons per row */
                     @media (max-width: 1024px) {
                         .clone-actions {
                             flex-wrap: wrap;
                         }
-                        
                         .clone-btn {
                             flex: 0 1 calc(50% - 0.2rem);
                         }
                     }
 
-                    /* ========== MOBILE (768px) ========== */
-                    @media (max-width: 768px) {
+                    /* Mobile: keep buttons in row, full width each */
+                    @media (max-width: 560px) {
                         .clone-actions {
+                            flex-direction: row;
                             flex-wrap: wrap;
-                            gap: 0.3rem;
+                            gap: 0.4rem;
                         }
-                        
                         .clone-btn {
-                            flex: 0 1 calc(50% - 0.15rem);
-                            padding: 0.35rem 0.55rem;
+                            flex: 1 1 calc(33% - 0.3rem);
+                            min-width: 0;
+                            padding: 0.4rem 0.3rem;
                             font-size: 0.6rem;
-                            min-height: 24px;
-                            gap: 0.2rem;
-                        }
-
-                        .clone-btn svg {
-                            font-size: 0.8em;
-                        }
-                    }
-
-                    /* ========== SMALL MOBILE (480px) ========== */
-                    @media (max-width: 480px) {
-                        .clone-actions {
-                            flex-direction: column;
-                            gap: 0.3rem;
-                        }
-
-                        .clone-btn {
-                            flex: 1 1 100%;
-                            width: 100%;
-                            justify-content: center;
-                            padding: 0.4rem 0.7rem;
-                            font-size: 0.65rem;
+                            min-height: 30px;
                         }
                     }
                 `}</style>
