@@ -1,9 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    
+    const handleNavClick = (e, targetId) => {
+        e.preventDefault();
+        if (location.pathname !== '/') {
+            navigate('/');
+            setTimeout(() => {
+                const element = document.getElementById(targetId);
+                if (element) {
+                    const offset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            }, 100);
+        } else {
+            const element = document.getElementById(targetId);
+            if (element) {
+                const offset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }
+    };
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('hero');
@@ -52,6 +79,9 @@ const Navbar = () => {
         { name: 'Certificates', href: '#certificates', id: 'certificates' },
         { name: 'Skills', href: '#skills', id: 'skills' },
         { name: 'Projects', href: '#projects', id: 'projects' },
+        { name: 'Figma', href: '#figma-designs', id: 'figma-designs' },
+        { name: 'Hackathons', href: '#hackathons', id: 'hackathons' },
+        { name: 'Achievements', href: '#achievements', id: 'achievements' },
         { name: 'Education', href: '#education', id: 'education' },
         { name: 'Community', href: '#code-community', id: 'code-community' }
     ];
@@ -111,7 +141,7 @@ const Navbar = () => {
                             const isActive = activeSection === link.id;
                             return (
                                 <li key={index} style={{ position: 'relative' }}>
-                                    <a href={link.href}
+                                    <a href={`#${link.id}`} onClick={(e) => handleNavClick(e, link.id)}
                                         style={{
                                             textDecoration: 'none',
                                             color: isActive ? 'var(--text-main)' : 'var(--text-muted)',
@@ -145,7 +175,7 @@ const Navbar = () => {
                         })}
                     </ul>
 
-                    <a href="#contact" style={{
+                    <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} style={{
                         background: 'var(--primary)',
                         color: 'var(--bg-dark)',
                         padding: '0.4rem 1rem',
@@ -239,8 +269,8 @@ const Navbar = () => {
                             {navLinks.map((link, index) => (
                                 <motion.a
                                     key={index}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
+                                    href={`#${link.id}`}
+                                    onClick={(e) => { setIsOpen(false); handleNavClick(e, link.id); }}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 + index * 0.1 }}
@@ -256,7 +286,7 @@ const Navbar = () => {
                             ))}
                             <motion.a
                                 href="#contact"
-                                onClick={() => setIsOpen(false)}
+                                onClick={(e) => { setIsOpen(false); handleNavClick(e, 'contact'); }}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}

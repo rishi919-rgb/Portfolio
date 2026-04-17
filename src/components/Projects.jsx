@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaGamepad, FaLaptopCode, FaCogs, FaShieldAlt, FaChartBar, FaSearch, FaBrain, FaFilm } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaGamepad, FaLaptopCode, FaCogs, FaShieldAlt, FaChartBar, FaSearch, FaBrain, FaFilm, FaYoutube } from 'react-icons/fa';
+import { SiPostman } from 'react-icons/si';
 import WebClonesModal from './WebClonesModal';
 
 // Project Screenshots
@@ -42,10 +44,7 @@ const TechBadge = ({ icon, text }) => (
     </span>
 );
 
-const Projects = () => {
-    const [isClonesModalOpen, setIsClonesModalOpen] = useState(false);
-
-    const featuredProjects = [
+export const featuredProjects = [
         {
             id: "drishti",
             title: "Drishti — The Third Eye",
@@ -110,7 +109,7 @@ const Projects = () => {
                 { icon: <SiFramer />, name: "Framer Motion" }
             ],
             repo: "https://github.com/rishi919-rgb/Debate-AI",
-            demo: "#",
+            demo: "https://debate-ai-qs.netlify.app/",
             img: debateAISS,
             size: "wide",
             accent: "#f59e0b"
@@ -129,9 +128,11 @@ const Projects = () => {
             demo: "#",
             img: movieSS,
             size: "standard",
-            accent: "#10b981"
         }
     ];
+
+const Projects = () => {
+    const [isClonesModalOpen, setIsClonesModalOpen] = useState(false);
 
     const coreProjects = [
         {
@@ -198,9 +199,13 @@ const Projects = () => {
                             transition={{ duration: 0.5 }}
                             whileHover={{ y: -5 }}
                         >
-                            <div className="project-hero-content">
-                                <div className="project-hero-top">
-                                    <span className="project-badge">FLAGSHIP PROJECT</span>
+                            {(() => {
+                                const projectColor = p.accent || 'var(--primary)';
+                                return (
+                                    <>
+                                        <div className="project-hero-content">
+                                            <div className="project-hero-top">
+                                                <span className="project-badge" style={{ color: projectColor, background: `${projectColor}15` }}>FLAGSHIP</span>
                                     <div className="project-status">
                                         <span className="status-pulse"></span>
                                         <span>Deployment in Progress</span>
@@ -214,19 +219,28 @@ const Projects = () => {
                                     ))}
                                 </div>
                                 <div className="project-hero-links">
-                                    <a href={p.repo} target="_blank" rel="noreferrer" className="btn-primary">
-                                        View Code
-                                    </a>
-                                    <a href={p.repo} target="_blank" rel="noreferrer" className="project-icon-btn">
+                                    <Link to={`/project/${p.id}`} className="btn-primary" style={{ background: projectColor, border: 'none' }}>
+                                        Deep Dive
+                                    </Link>
+                                    <a href={p.repo} target="_blank" rel="noreferrer" className="project-icon-btn" title="GitHub Repository">
                                         <FaGithub />
+                                    </a>
+                                    <a href="#" target="_blank" rel="noreferrer" className="project-icon-btn" title="YouTube Demo">
+                                        <FaYoutube color="#FF0000" />
+                                    </a>
+                                    <a href="#" target="_blank" rel="noreferrer" className="project-icon-btn" title="API Postman Docs">
+                                        <SiPostman color="#FF6C37" />
                                     </a>
                                 </div>
                             </div>
                             <div className="project-hero-image">
                                 <img src={p.img} alt={p.title} />
                                 <div className="hero-image-overlay"></div>
-                                <span className="hero-image-tag">Computer Vision + LLM</span>
-                            </div>
+                                        <span className="hero-image-tag">Computer Vision + LLM</span>
+                                    </div>
+                                    </>
+                                );
+                            })()}
                         </motion.div>
                     ))}
 
@@ -255,9 +269,17 @@ const Projects = () => {
                                     <div className="card-tech-row">
                                         {p.tech.map((t, i) => <span key={i} title={t.name}>{t.icon}</span>)}
                                     </div>
-                                    <a href={p.demo} target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }}>
-                                        Visit Site →
-                                    </a>
+                                    <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="YouTube Demo">
+                                            <FaYoutube size={16} />
+                                        </a>
+                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="GitHub Profile">
+                                            <FaGithub size={16} />
+                                        </a>
+                                        <Link to={`/project/${p.id}`} className="card-link" style={{ color: p.accent, fontWeight: 'bold' }}>
+                                            Deep Dive →
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -288,9 +310,17 @@ const Projects = () => {
                                     <div className="card-tech-row">
                                         {p.tech.map((t, i) => <span key={i} title={t.name}>{t.icon}</span>)}
                                     </div>
-                                    <a href={p.repo} target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }}>
-                                        GitHub →
-                                    </a>
+                                    <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="YouTube Demo">
+                                            <FaYoutube size={16} />
+                                        </a>
+                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="GitHub Profile">
+                                            <FaGithub size={16} />
+                                        </a>
+                                        <Link to={`/project/${p.id}`} className="card-link" style={{ color: p.accent, fontWeight: 'bold' }}>
+                                            Deep Dive →
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -321,9 +351,14 @@ const Projects = () => {
                                     <div className="card-tech-row">
                                         {p.tech.map((t, i) => <span key={i} title={t.name}>{t.icon}</span>)}
                                     </div>
-                                    <a href={p.repo} target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }}>
-                                        GitHub →
-                                    </a>
+                                    <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                                        <a href="#" target="_blank" rel="noreferrer" className="card-link" style={{ color: p.accent }} title="GitHub Profile">
+                                            <FaGithub size={16} />
+                                        </a>
+                                        <Link to={`/project/${p.id}`} className="card-link" style={{ color: p.accent, fontWeight: 'bold' }}>
+                                            Deep Dive →
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>

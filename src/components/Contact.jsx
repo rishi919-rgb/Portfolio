@@ -1,14 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaPaperPlane, FaCopy, FaCheck, FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaYoutube } from 'react-icons/fa';
+import { FaPaperPlane, FaCopy, FaCheck, FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaYoutube, FaTwitter } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const [copied, setCopied] = useState(false);
+    const form = useRef();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null);
 
     const copyEmail = () => {
         navigator.clipboard.writeText("rishikesh.singhges@gmail.com");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+    };
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+        
+        emailjs.sendForm('service_tc8ef8m', 'template_ijvq0sc', form.current, 'mxcVLguSQvSSLgXcz')
+            .then((result) => {
+                setSubmitStatus('success');
+                setIsSubmitting(false);
+                e.target.reset();
+            }, (error) => {
+                setSubmitStatus('error');
+                setIsSubmitting(false);
+            });
     };
 
     return (
@@ -72,52 +92,37 @@ const Contact = () => {
                     </button>
                 </div>
 
-                {/* Direct Contact Card */}
+                {/* Direct Contact Form */}
                 <div className="glass-card" style={{
                     padding: '3rem',
-                    textAlign: 'center',
                     maxWidth: '600px',
                     margin: '0 auto',
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '1.5rem'
+                    gap: '1.5rem',
+                    textAlign: 'left'
                 }}>
-                    <div style={{
-                        width: '80px',
-                        height: '80px',
-                        borderRadius: '50%',
-                        background: 'rgba(34, 197, 94, 0.1)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '2rem',
-                        color: '#22c55e',
-                        marginBottom: '0.5rem'
-                    }}>
-                        <FaEnvelope />
-                    </div>
-
-                    <h3 style={{ fontSize: '1.8rem', margin: 0 }}>Shoot me an email</h3>
-
-                    <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '400px' }}>
-                        I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-                    </p>
-
-                    <a
-                        href="mailto:rishikesh.singhges@gmail.com"
-                        className="btn-primary"
-                        style={{
-                            padding: '1rem 2.5rem',
-                            fontSize: '1.1rem',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.8rem',
-                            marginTop: '1rem'
-                        }}
-                    >
-                        <FaPaperPlane /> Say Hello
-                    </a>
+                    <h3 style={{ fontSize: '1.8rem', margin: 0, textAlign: 'center' }}>Send a Message</h3>
+                    
+                    <form ref={form} onSubmit={sendEmail} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                            <label style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Name</label>
+                            <input type="text" name="user_name" required style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'rgba(0,0,0,0.2)', color: 'var(--text-main)', fontSize: '1rem' }} />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                            <label style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Email</label>
+                            <input type="email" name="user_email" required style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'rgba(0,0,0,0.2)', color: 'var(--text-main)', fontSize: '1rem' }} />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                            <label style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Message</label>
+                            <textarea name="message" required rows="4" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'rgba(0,0,0,0.2)', color: 'var(--text-main)', fontSize: '1rem', resize: 'vertical' }}></textarea>
+                        </div>
+                        <button type="submit" className="btn-primary" disabled={isSubmitting} style={{ padding: '1rem', fontSize: '1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', marginTop: '1rem', cursor: isSubmitting ? 'not-allowed' : 'pointer', opacity: isSubmitting ? 0.7 : 1 }}>
+                            <FaPaperPlane /> {isSubmitting ? 'Sending...' : 'Send Message'}
+                        </button>
+                        {submitStatus === 'success' && <p style={{ color: '#22c55e', textAlign: 'center', fontSize: '0.9rem', margin: 0 }}>Message sent successfully!</p>}
+                        {submitStatus === 'error' && <p style={{ color: '#ef4444', textAlign: 'center', fontSize: '0.9rem', margin: 0 }}>Failed to send message. Please try again.</p>}
+                    </form>
                 </div>
 
                 {/* Social Links for Consistency */}
@@ -125,13 +130,16 @@ const Contact = () => {
                     <a href="https://github.com/rishi919-rgb" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'var(--text-main)'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>
                         <FaGithub />
                     </a>
-                    <a href="https://www.linkedin.com/in/rishikesh-singh-45661428a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = '#0077b5'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>
+                    <a href="https://www.linkedin.com/in/rishikesh-singh-45661428a/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = '#0077b5'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>
                         <FaLinkedin />
                     </a>
-                    <a href="https://www.instagram.com/_rishikesh_singh__?igsh=MWc1YWhvbDhhYnBldA==" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = '#E1306C'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>
+                    <a href="https://x.com/Rishike7157746" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = '#1DA1F2'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>
+                        <FaTwitter />
+                    </a>
+                    <a href="https://www.instagram.com/_rishikesh_singh__" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = '#E1306C'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>
                         <FaInstagram />
                     </a>
-                    <a href="https://youtube.com/@rishikesh919?si=pFxVoG8UK41t6pYE" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = '#FF0000'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>
+                    <a href="https://youtube.com/@rishikesh919" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = '#FF0000'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>
                         <FaYoutube />
                     </a>
                     <a href="mailto:rishikesh.singhges@gmail.com" style={{ color: 'var(--text-muted)', fontSize: '1.5rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = '#EA4335'} onMouseOut={(e) => e.target.style.color = 'var(--text-muted)'}>

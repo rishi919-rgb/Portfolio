@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07141f" />
+      <stop offset="50%" stop-color="#0b2233" />
+      <stop offset="100%" stop-color="#10344d" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#30d5c8" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#30d5c8" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#30d5c8" />
+      <stop offset="100%" stop-color="#7dd3fc" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+  <circle cx="1040" cy="110" r="160" fill="#30d5c8" opacity="0.08" />
+  <circle cx="170" cy="550" r="190" fill="#7dd3fc" opacity="0.08" />
+  <rect x="84" y="84" width="1032" height="462" rx="28" fill="none" stroke="rgba(255,255,255,0.18)" />
+  <path d="M155 170h155c77 0 124 39 124 103c0 47-26 78-68 92l68 95h-95l-57-81h-45v81h-82V170Zm82 61v84h65c32 0 49-14 49-42c0-28-17-42-49-42h-65Z" fill="#f8fafc" />
+  <rect x="490" y="180" width="150" height="14" rx="7" fill="url(#line)" />
+  <text x="490" y="275" fill="#f8fafc" font-size="72" font-weight="800" font-family="Segoe UI, Arial, sans-serif">Rishikesh Singh</text>
+  <text x="490" y="345" fill="#b8d7e8" font-size="34" font-weight="600" font-family="Segoe UI, Arial, sans-serif">Full Stack Developer • React • Node.js • AI</text>
+  <text x="490" y="414" fill="#d9eef7" font-size="28" font-weight="400" font-family="Segoe UI, Arial, sans-serif">Portfolio of projects, skills, case studies, and developer experience.</text>
+  <rect x="490" y="455" width="278" height="54" rx="27" fill="rgba(48,213,200,0.12)" stroke="rgba(48,213,200,0.45)" />
+  <text x="529" y="490" fill="#7dd3fc" font-size="24" font-weight="700" font-family="Segoe UI, Arial, sans-serif">rishikesh-singh.vercel.app</text>
+</svg>

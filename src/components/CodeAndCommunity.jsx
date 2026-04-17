@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import { GitHubCalendar } from 'react-github-calendar';
 
 const CodeAndCommunity = () => {

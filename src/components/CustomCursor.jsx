@@ -47,7 +47,7 @@ const CustomCursor = () => {
                     borderRadius: '50%',
                     border: '1px solid rgba(96, 165, 250, 0.4)', // Faint primary
                     pointerEvents: 'none',
-                    zIndex: 9998,
+                    zIndex: 99998,
                     x: outerX,
                     y: outerY,
                     translateX: '-50%',
@@ -67,7 +67,7 @@ const CustomCursor = () => {
                     backgroundColor: 'var(--primary)',
                     borderRadius: '50%',
                     pointerEvents: 'none',
-                    zIndex: 9999,
+                    zIndex: 99999,
                     x: innerX,
                     y: innerY,
                     translateX: '-50%',
